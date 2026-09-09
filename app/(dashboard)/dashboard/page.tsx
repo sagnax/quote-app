@@ -1,4 +1,12 @@
-import { FileText, Plus } from "lucide-react";
+import {
+  CircleCheck,
+  Clock,
+  FileText,
+  type LucideIcon,
+  Percent,
+  Plus,
+  Receipt,
+} from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { DashboardFilters } from "@/components/dashboard/dashboard-filters";
@@ -59,15 +67,26 @@ function Kpi({
   label,
   value,
   hint,
+  icon: Icon,
+  tone,
 }: {
   label: string;
   value: string;
   hint: string;
+  icon: LucideIcon;
+  tone: string;
 }) {
   return (
     <Card>
       <CardContent className="flex flex-col gap-1 pt-6">
-        <p className="text-muted-foreground text-sm">{label}</p>
+        <p className="flex items-center gap-1.5 text-muted-foreground text-sm">
+          <span
+            className={`flex size-6 items-center justify-center rounded-md ${tone}`}
+          >
+            <Icon className="size-3.5" aria-hidden />
+          </span>
+          {label}
+        </p>
         <p className="font-mono tabular font-semibold text-2xl">{value}</p>
         <p className="text-muted-foreground text-xs">{hint}</p>
       </CardContent>
@@ -204,6 +223,8 @@ export default async function DashboardPage({
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Kpi
           label="Pendente agora"
+          icon={Clock}
+          tone="bg-warning/15 text-warning"
           value={new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
@@ -213,6 +234,8 @@ export default async function DashboardPage({
         />
         <Kpi
           label="Aprovado no período"
+          icon={CircleCheck}
+          tone="bg-success/15 text-success"
           value={new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
@@ -222,11 +245,15 @@ export default async function DashboardPage({
         />
         <Kpi
           label="Conversão"
+          icon={Percent}
+          tone="bg-info/15 text-info"
           value={`${Math.round(conversion)}%`}
           hint={`${decidedInRange.length} decididos no período`}
         />
         <Kpi
           label="Ticket médio"
+          icon={Receipt}
+          tone="bg-primary/10 text-primary"
           value={new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",

@@ -27,7 +27,7 @@
 | `background` / `foreground` | fundo da página / texto principal |
 | `card` / `card-foreground` | cards de resumo, cliente |
 | `popover` / `popover-foreground` | dropdowns, selects |
-| `primary` / `primary-foreground` | ação principal (Novo orçamento, Salvar) — placeholder neutro, trocar pela marca em `/configuracoes` |
+| `primary` / `primary-foreground` | ação principal (Novo orçamento, Salvar) — azul padrão; trocar pela marca em `/configuracoes` (só tokens em `:root`/`.dark`) |
 | `secondary` / `secondary-foreground` | ações secundárias |
 | `muted` / `muted-foreground` | fundos sutis, labels, placeholders |
 | `accent` / `accent-foreground` | hover, destaque sutil |
@@ -109,6 +109,7 @@ Não instalados ainda (adicionar quando precisar): `form, calendar/popover (vali
 | `QuoteSharePanel` | `{ quoteId, token, numero, total, ... }` | Imprimir/PDF, WhatsApp, copiar e regenerar link. |
 | `PrintButton` | `{ label? }` | Botão `window.print()` (área `.no-print`). |
 | `DashboardFilters` | `{ period }` | Seletor de período do dashboard (mês/anterior/90d). |
+| `NavLinks` | — | Nav do header com estado ativo (`aria-current`). |
 
 ## 9. Testes
 

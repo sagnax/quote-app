@@ -61,7 +61,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: oklch(0.55 0.17 260);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -78,8 +78,8 @@
   --info-foreground: oklch(0.985 0 0);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
+  --ring: oklch(0.6 0.15 260);
+  --chart-1: oklch(0.62 0.17 260);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
@@ -87,12 +87,12 @@
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary: oklch(0.55 0.17 260);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.6 0.15 260);
 }
 
 .dark {
@@ -102,8 +102,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: oklch(0.7 0.15 262);
+  --primary-foreground: oklch(0.18 0.03 262);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -119,8 +119,8 @@
   --info-foreground: oklch(0.145 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
+  --ring: oklch(0.6 0.15 262);
+  --chart-1: oklch(0.7 0.15 262);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
@@ -145,15 +145,45 @@
   html {
     @apply font-sans;
   }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
 }
 
 @utility tabular {
   font-variant-numeric: tabular-nums;
 }
 
+/* Esconde as setinhas nativas de input numérico (sobrepõem o valor). */
+@utility no-spinner {
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 @layer components {
   .print-area {
     @apply mx-auto w-full max-w-[210mm] bg-card;
+  }
+  /* Fundo sutil das telas de auth: brilho da marca sobre o neutro. */
+  .auth-bg {
+    background:
+      radial-gradient(
+        60rem 30rem at 50% -10rem,
+        color-mix(in oklch, var(--primary) 12%, transparent),
+        transparent
+      ),
+      radial-gradient(
+        40rem 20rem at 90% 110%,
+        color-mix(in oklch, var(--primary) 8%, transparent),
+        transparent
+      );
   }
 }
 

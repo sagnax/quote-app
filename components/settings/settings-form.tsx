@@ -211,6 +211,7 @@ export function SettingsForm({
             type="number"
             min={1}
             max={365}
+            className="no-spinner"
             {...form.register("validade_padrao_dias", { valueAsNumber: true })}
           />
           {form.formState.errors.validade_padrao_dias ? (

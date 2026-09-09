@@ -430,10 +430,16 @@ export function QuoteForm({
               <ItemTable items={looseItems} onChange={setLooseItems} />
             </CardContent>
           </Card>
-          {sections.map((section) => (
+          {sections.map((section, i) => (
             <Card key={section.key}>
               <CardHeader>
                 <div className="flex items-center gap-2">
+                  <span
+                    aria-hidden
+                    className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/10 font-mono text-xs font-semibold text-primary"
+                  >
+                    {i + 1}
+                  </span>
                   <Input
                     aria-label="Título da etapa"
                     placeholder="Ex: Etapa 1 — Fundação"

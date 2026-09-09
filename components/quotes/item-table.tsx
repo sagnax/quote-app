@@ -60,14 +60,14 @@ export function ItemTable({
 
   return (
     <div className="flex flex-col gap-2">
-      <Table>
+      <Table className="min-w-[680px]">
         <TableHeader>
           <TableRow>
             <TableHead className="min-w-40">Descrição</TableHead>
             <TableHead className="w-28">Tipo</TableHead>
-            <TableHead className="w-20 text-right">Qtd</TableHead>
+            <TableHead className="w-24 text-right">Qtd</TableHead>
             <TableHead className="w-20">Un</TableHead>
-            <TableHead className="w-28 text-right">Preço unit.</TableHead>
+            <TableHead className="w-32 text-right">Preço</TableHead>
             <TableHead className="w-28 text-right">Total</TableHead>
             <TableHead className="w-10" />
           </TableRow>
@@ -106,7 +106,7 @@ export function ItemTable({
                   type="number"
                   min={0}
                   step="any"
-                  className="text-right font-mono tabular"
+                  className="text-right font-mono tabular no-spinner"
                   value={item.qtd}
                   onChange={(e) =>
                     patch(item.key, "qtd", e.target.valueAsNumber || 0)
@@ -136,7 +136,7 @@ export function ItemTable({
                   type="number"
                   min={0}
                   step="any"
-                  className="text-right font-mono tabular"
+                  className="text-right font-mono tabular no-spinner"
                   value={item.preco_unit}
                   onChange={(e) =>
                     patch(item.key, "preco_unit", e.target.valueAsNumber || 0)

@@ -65,7 +65,7 @@ export function TotalsPanel({
               type="number"
               min={0}
               step="any"
-              className="text-right font-mono tabular"
+              className="text-right font-mono tabular no-spinner"
               value={descontoValor}
               onChange={(e) => onDescontoValor(e.target.valueAsNumber || 0)}
             />
